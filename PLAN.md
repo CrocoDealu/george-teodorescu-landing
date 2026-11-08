@@ -10,12 +10,11 @@ Primary language: **English**. No build step: open `index.html` in a browser or 
 
 | Page | File | Purpose |
 |------|------|---------|
-| Home | `index.html` | Hero (portrait, signature, quote), entry cards, latest discoveries |
+| Home | `index.html` | Hero (portrait, signature, quote), entry cards, recently added works and documents |
 | Life | `life.html` | Timeline of his life: Romania, Paris, Buenos Aires |
 | Work | `work.html` | His works (sculpture, drawing, architecture), filterable by type |
 | Archive | `archive.html` | Documents (letters, photographs, press), filterable by type |
 | Circle | `circle.html` | Interactive graph of his relationships. Each tie leads to works and documents |
-| Discoveries | `discoveries.html` | Recent findings, research notes, exhibitions (the "news" section) |
 | Contact | `contact.html` | Contact, and a call for anyone holding letters, photographs or works |
 
 ## Decisions (open for discussion)
@@ -26,8 +25,8 @@ Primary language: **English**. No build step: open `index.html` in a browser or 
    `archive.html#D-001`).
 2. **"Network" is called "Circle"** ("His Circle"). Alternatives: *Constellation*,
    *Connections*, *Friends & Collaborators*, *Correspondents*.
-3. **"News" is called "Discoveries"**: what has come to light about him recently.
-   Alternatives: *Findings*, *Research Notes*, *Journal*.
+3. **No separate news page.** New findings are archive items: each has an `added` date and
+   Home shows the three newest. Add a "Journal" page if exhibitions or articles need a home.
 4. **One data file** (`js/data.js`) holds the people, works and documents. Work, Archive
    and the Circle graph all render from it, so the links between people, works and
    documents live in one place.
@@ -38,7 +37,7 @@ Primary language: **English**. No build step: open `index.html` in a browser or 
 
 ```js
 people: { id, name, role, place, years, relation, knows: [personId] }
-items:  { id, kind: "work"|"document", type, title, date, place, text, people: [personId] }
+items:  { id, added, kind: "work"|"document", type, title, date, place, text, people: [personId] }
 ```
 
 Every person is linked to George. `knows` adds links between other people in the graph.

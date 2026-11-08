@@ -1,9 +1,20 @@
-// Renders Work, Archive and Circle from data.js. Each block runs only on its page.
+// Renders Home strip, Work, Archive and Circle from data.js. Each block runs only on its page.
 
 const person = Object.fromEntries(PEOPLE.map(p => [p.id, p]));
 const itemsOf = id => ITEMS.filter(i => i.people.includes(id));
 const itemUrl = i => `${i.kind === "work" ? "work" : "archive"}.html#${i.id}`;
 const personLink = id => `<a class="link" href="circle.html#${id}">${person[id].name}</a>`;
+
+// Home: the three newest works or documents
+const strip = document.querySelector(".strip");
+if (strip) {
+  const fmt = d => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  strip.insertAdjacentHTML("beforeend", [...ITEMS].sort((a, b) => b.added.localeCompare(a.added)).slice(0, 3).map(i => `
+    <a class="mini" href="${itemUrl(i)}">
+      <img src="assets/img/placeholder.svg" alt="">
+      <span>${i.title}<time datetime="${i.added}">Added ${fmt(i.added)}</time></span>
+    </a>`).join(""));
+}
 
 // Work and Archive: same catalogue, filtered by data-kind on the container
 const archive = document.querySelector(".archive");

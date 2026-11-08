@@ -41,24 +41,24 @@ const PEOPLE = [
   },
 ];
 
-// kind: "work" | "document". type drives the Archive filters.
+// kind: "work" | "document". type drives the filters. added (YYYY-MM-DD) feeds "Recently added" on Home.
 const ITEMS = [
-  { id: "W-001", kind: "work", type: "Sculpture", title: "[Untitled form]", date: "[c. 1938]", place: "Paris",
+  { id: "W-001", added: "2026-01-10", kind: "work", type: "Sculpture", title: "[Untitled form]", date: "[c. 1938]", place: "Paris",
     text: "[Placeholder: stone, dimensions, current location.]", people: ["brancusi"] },
-  { id: "W-002", kind: "work", type: "Drawing", title: "[Study for a figure]", date: "[1940]", place: "Paris",
+  { id: "W-002", added: "2026-01-10", kind: "work", type: "Drawing", title: "[Study for a figure]", date: "[1940]", place: "Paris",
     text: "[Placeholder: ink on paper.]", people: ["painter"] },
-  { id: "W-003", kind: "work", type: "Architecture", title: "[House project]", date: "[1936]", place: "Bucharest",
+  { id: "W-003", added: "2026-01-10", kind: "work", type: "Architecture", title: "[House project]", date: "[1936]", place: "Bucharest",
     text: "[Placeholder: plans and elevations.]", people: ["architect", "teacher"] },
-  { id: "W-004", kind: "work", type: "Sculpture", title: "[Head]", date: "[1949]", place: "Buenos Aires",
+  { id: "W-004", added: "2026-09-04", kind: "work", type: "Sculpture", title: "[Head]", date: "[1949]", place: "Buenos Aires",
     text: "[Placeholder: bronze.]", people: ["gallerist"] },
-  { id: "D-001", kind: "document", type: "Letter", title: "[Letter to a friend in Paris]", date: "[12 March 1947]", place: "Paris",
+  { id: "D-001", added: "2026-10-12", kind: "document", type: "Letter", title: "[Letter to a friend in Paris]", date: "[12 March 1947]", place: "Paris",
     text: "[Placeholder: two handwritten pages, private collection.]", people: ["painter"] },
-  { id: "D-002", kind: "document", type: "Photograph", title: "[In the studio]", date: "[c. 1939]", place: "Paris",
+  { id: "D-002", added: "2026-01-10", kind: "document", type: "Photograph", title: "[In the studio]", date: "[c. 1939]", place: "Paris",
     text: "[Placeholder: gelatin silver print.]", people: ["brancusi"] },
-  { id: "D-003", kind: "document", type: "Press", title: "[Exhibition review]", date: "[1950]", place: "Buenos Aires",
+  { id: "D-003", added: "2026-06-15", kind: "document", type: "Press", title: "[Exhibition review]", date: "[1950]", place: "Buenos Aires",
     text: "[Placeholder: newspaper clipping.]", people: ["critic", "gallerist"] },
-  { id: "D-004", kind: "document", type: "Letter", title: "[Catalogue preface]", date: "[1946]", place: "Paris",
+  { id: "D-004", added: "2026-01-10", kind: "document", type: "Letter", title: "[Catalogue preface]", date: "[1946]", place: "Paris",
     text: "[Placeholder: typescript with handwritten corrections.]", people: ["poet"] },
-  { id: "D-005", kind: "document", type: "Photograph", title: "[Class portrait]", date: "[1934]", place: "Bucharest",
+  { id: "D-005", added: "2026-01-10", kind: "document", type: "Photograph", title: "[Class portrait]", date: "[1934]", place: "Bucharest",
     text: "[Placeholder: School of Fine Arts.]", people: ["teacher"] },
 ];
