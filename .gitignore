@@ -1,1 +1,14 @@
+# Internal notes
+PLAN.md
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local settings
+.claude/
