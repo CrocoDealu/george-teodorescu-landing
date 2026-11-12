@@ -76,14 +76,16 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.1; ma
 .hero .tagline { font-family: var(--display); font-style: italic; font-size: 1.7rem; line-height: 1.3; margin: 0 0 1rem; }
 .hero p { max-width: 34em; }
 .hero-photo { position: relative; overflow: hidden; }
-.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(.25) grayscale(.3); }
+/* portrait is upright on a light backdrop: it fills the left of the column, the quote sits beside it */
+.hero-photo img { position: absolute; inset: 0 auto 0 0; width: 58%; height: 100%; object-fit: cover; object-position: center 30%; filter: sepia(.25) grayscale(.3);
+  mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
 .hero-quote {
   position: absolute; right: clamp(1rem, 3vw, 3rem); top: 40%;
-  max-width: 15em; color: #f4f0e9;
+  margin: 0; max-width: min(15em, 32%); color: var(--ink);
   font-family: var(--display); font-style: italic; font-size: 1.35rem; line-height: 1.4;
 }
 .hero-quote cite { display: block; font-style: normal; margin-top: 1rem; }
-.hero-quote .rule { border-color: #f4f0e9; }
+.hero-quote .rule { border-color: var(--ink); }
 
 /* Cards */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; padding-block: 1.5rem; }
@@ -168,7 +170,8 @@ a.card:hover { border-color: var(--accent); }
   .site-header .wrap { flex-direction: column; gap: .8rem; }
   .nav { margin: 0; max-width: 100%; gap: .3rem 1.2rem; flex-wrap: wrap; justify-content: center; }
   .hero, .circle, .split { grid-template-columns: 1fr; }
-  .hero-photo { aspect-ratio: 4 / 3; }
+  .hero-photo img { position: static; width: 100%; aspect-ratio: 4 / 5; }
+  .hero-quote { position: static; max-width: none; padding: 1.5rem clamp(16px, 5vw, 5rem); }
   .strip { grid-template-columns: 1fr; }
   .timeline li { grid-template-columns: 1fr; gap: .2rem; }
   .panel { position: static; }
