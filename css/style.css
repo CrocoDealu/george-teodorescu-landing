@@ -37,7 +37,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.1; ma
 .site-header { border-bottom: 1px solid var(--rule); }
 .site-header .wrap { display: flex; align-items: center; gap: 2rem; padding-block: 1rem; }
 .brand { text-decoration: none; text-align: center; flex-shrink: 0; }
-.brand img { height: 46px; margin: 0 auto -4px; }
+.brand img { width: 200px; height: auto; margin: 0 auto -4px; mix-blend-mode: multiply; }
 .brand .name { display: block; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; }
 .brand .years { display: block; font-size: .78rem; letter-spacing: .1em; }
 .nav { display: flex; gap: 1.8rem; margin-left: auto; overflow-x: auto; }
@@ -164,7 +164,7 @@ a.card:hover { border-color: var(--accent); }
 /* Footer */
 .site-footer { border-top: 1px solid var(--rule); padding-block: 2rem; font-size: .9rem; color: var(--muted); }
 .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
-.site-footer img { height: 34px; opacity: .8; }
+.site-footer img { width: 150px; height: auto; opacity: .8; mix-blend-mode: multiply; }
 
 @media (max-width: 900px) {
   .site-header .wrap { flex-direction: column; gap: .8rem; }
