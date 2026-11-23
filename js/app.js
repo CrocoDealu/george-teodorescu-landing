@@ -22,12 +22,12 @@ if (archive) {
   const items = ITEMS.filter(i => i.kind === archive.dataset.kind);
   archive.innerHTML = items.map(i => `
     <article class="card" id="${i.id}" data-type="${i.type}">
-      <img src="assets/img/placeholder.svg" alt="[Image: ${i.title}]">
+      <img class="${i.image ? "archive-photo" : ""}" src="${i.image || "assets/img/placeholder.svg"}" alt="${i.image ? i.title : `[Image: ${i.title}]`}">
       <div class="card-body">
-        <div class="meta">${i.type} · ${i.date} · ${i.place} <span class="id">${i.id}</span></div>
+        <div class="meta">${[i.type, i.date, i.place].filter(Boolean).join(" · ")} <span class="id">${i.id}</span></div>
         <h2>${i.title}</h2>
-        <p>${i.text}</p>
-        <div class="people">With ${i.people.map(personLink).join(", ")}</div>
+        ${i.text ? `<p>${i.text}</p>` : ""}
+        ${i.people.length ? `<div class="people">With ${i.people.map(personLink).join(", ")}</div>` : ""}
       </div>
     </article>`).join("");
 

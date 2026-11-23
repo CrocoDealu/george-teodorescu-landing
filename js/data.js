@@ -61,4 +61,6 @@ const ITEMS = [
     text: "[Placeholder: typescript with handwritten corrections.]", people: ["poet"] },
   { id: "D-005", added: "2026-01-10", kind: "document", type: "Photograph", title: "[Class portrait]", date: "[1934]", place: "Bucharest",
     text: "[Placeholder: School of Fine Arts.]", people: ["teacher"] },
+  { id: "D-006", added: "2026-11-23", kind: "document", type: "Photograph", title: "George Teodorescu, aged 12, with his mother", date: "", place: "",
+    text: "", image: "assets/img/george-teodorescu-with-mother.jpg", people: [] },
 ];

@@ -130,6 +130,7 @@ a.card:hover { border-color: var(--accent); }
 }
 .filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .archive { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+.archive .card img.archive-photo { aspect-ratio: 3 / 4; object-fit: cover; filter: grayscale(1); }
 .archive .card { scroll-margin-top: 2rem; }
 .archive .card:target { outline: 2px solid var(--accent); outline-offset: 4px; }
 .archive .meta { font-size: .85rem; color: var(--muted); margin-bottom: .5rem; }
