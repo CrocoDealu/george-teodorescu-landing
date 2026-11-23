@@ -81,8 +81,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.1; ma
   mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
 .hero-quote {
   position: absolute; right: clamp(1rem, 3vw, 3rem); top: 40%;
-  margin: 0; max-width: min(15em, 32%); color: var(--ink);
-  font-family: var(--display); font-style: italic; font-size: 1.35rem; line-height: 1.4;
+  margin: 0; width: max-content; max-width: calc(100% - 2rem); white-space: nowrap; color: var(--ink);
+  font-family: var(--display); font-style: italic; font-size: clamp(.7rem, 1.5vw, 1.1rem); line-height: 1.4;
 }
 .hero-quote cite { display: block; font-style: normal; margin-top: 1rem; }
 .hero-quote .rule { border-color: var(--ink); }
@@ -172,7 +172,7 @@ a.card:hover { border-color: var(--accent); }
   .nav { margin: 0; max-width: 100%; gap: .3rem 1.2rem; flex-wrap: wrap; justify-content: center; }
   .hero, .circle, .split { grid-template-columns: 1fr; }
   .hero-photo img { position: static; width: 100%; aspect-ratio: 4 / 5; }
-  .hero-quote { position: static; max-width: none; padding: 1.5rem clamp(16px, 5vw, 5rem); }
+  .hero-quote { position: static; width: auto; max-width: none; white-space: normal; padding: 1.5rem clamp(16px, 5vw, 5rem); font-size: 1.1rem; }
   .strip { grid-template-columns: 1fr; }
   .timeline li { grid-template-columns: 1fr; gap: .2rem; }
   .panel { position: static; }
