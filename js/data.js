@@ -3,7 +3,7 @@
 
 const PEOPLE = [
   {
-    id: "george", name: "George Teodorescu", role: "Sculptor, draughtsman, architect",
+    id: "george", name: "George Teodorescu", role: "Sculptor",
     place: "Romania · France · Argentina", years: "1915–1952",
     relation: "Select a name in the circle to see how their path crossed George Teodorescu's, and which works and documents bear witness to it.",
   },
@@ -14,7 +14,7 @@ const PEOPLE = [
   },
   {
     id: "architect", name: "[Architect]", role: "[Architect]", place: "Bucharest", years: "[19xx–19xx]",
-    relation: "[Placeholder: shared architectural projects.]",
+    relation: "[Placeholder: how their paths crossed.]",
   },
   {
     id: "brancusi", name: "Constantin Brâncuși", role: "Sculptor", place: "Paris", years: "1876–1957",
@@ -45,10 +45,6 @@ const PEOPLE = [
 const ITEMS = [
   { id: "W-001", added: "2026-01-10", kind: "work", type: "Sculpture", title: "[Untitled form]", date: "[c. 1938]", place: "Paris",
     text: "[Placeholder: stone, dimensions, current location.]", people: ["brancusi"] },
-  { id: "W-002", added: "2026-01-10", kind: "work", type: "Drawing", title: "[Study for a figure]", date: "[1940]", place: "Paris",
-    text: "[Placeholder: ink on paper.]", people: ["painter"] },
-  { id: "W-003", added: "2026-01-10", kind: "work", type: "Architecture", title: "[House project]", date: "[1936]", place: "Bucharest",
-    text: "[Placeholder: plans and elevations.]", people: ["architect", "teacher"] },
   { id: "W-004", added: "2026-09-04", kind: "work", type: "Sculpture", title: "[Head]", date: "[1949]", place: "Buenos Aires",
     text: "[Placeholder: bronze.]", people: ["gallerist"] },
   { id: "D-001", added: "2026-10-12", kind: "document", type: "Letter", title: "[Letter to a friend in Paris]", date: "[12 March 1947]", place: "Paris",
