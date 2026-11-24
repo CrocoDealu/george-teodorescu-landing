@@ -121,6 +121,8 @@ a.card:hover { border-color: var(--accent); }
 .timeline .when { font-family: var(--display); font-size: 1.5rem; line-height: 1.2; }
 .timeline h2 { font-size: 1.7rem; }
 .timeline img { margin-top: 1rem; max-width: 420px; filter: sepia(.3); }
+.timeline-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 420px)); gap: 1rem; align-items: start; margin-top: 1rem; }
+.timeline-photos img { width: 100%; height: auto; max-width: 420px; margin-top: 0; }
 
 /* Archive */
 .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
