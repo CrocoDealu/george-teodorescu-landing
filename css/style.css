@@ -120,6 +120,7 @@ a.card:hover { border-color: var(--accent); }
 .timeline li::before { content: ""; position: absolute; left: -5px; top: .55em; width: 9px; height: 9px; background: var(--paper); border: 1px solid var(--accent); border-radius: 50%; }
 .timeline .when { font-family: var(--display); font-size: 1.5rem; line-height: 1.2; }
 .timeline h2 { font-size: 1.7rem; }
+.birth-details { scroll-margin-top: 2rem; padding-bottom: 2rem; }
 .timeline img { margin-top: 1rem; max-width: 420px; filter: sepia(.3); }
 .timeline-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 420px)); gap: 1rem; align-items: start; margin-top: 1rem; }
 .timeline-photos img { width: 100%; height: auto; max-width: 420px; margin-top: 0; }
