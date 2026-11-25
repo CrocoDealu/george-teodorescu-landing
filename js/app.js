@@ -8,11 +8,11 @@ const personLink = id => `<a class="link" href="circle.html#${id}">${person[id].
 // Home: the three newest works or documents
 const strip = document.querySelector(".strip");
 if (strip) {
-  const fmt = d => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  const fmt = d => new Date(d).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
   strip.insertAdjacentHTML("beforeend", [...ITEMS].sort((a, b) => b.added.localeCompare(a.added)).slice(0, 3).map(i => `
     <a class="mini" href="${itemUrl(i)}">
       <img src="assets/img/placeholder.svg" alt="">
-      <span>${i.title}<time datetime="${i.added}">Added ${fmt(i.added)}</time></span>
+      <span>${i.title}<time datetime="${i.added}">Adăugat ${fmt(i.added)}</time></span>
     </a>`).join(""));
 }
 
@@ -22,18 +22,18 @@ if (archive) {
   const items = ITEMS.filter(i => i.kind === archive.dataset.kind);
   archive.innerHTML = items.map(i => `
     <article class="card" id="${i.id}" data-type="${i.type}">
-      <img class="${i.image ? "archive-photo" : ""}" src="${i.image || "assets/img/placeholder.svg"}" alt="${i.image ? i.title : `[Image: ${i.title}]`}">
+      <img class="${i.image ? "archive-photo" : ""}" src="${i.image || "assets/img/placeholder.svg"}" alt="${i.image ? i.title : `[Imagine: ${i.title}]`}">
       <div class="card-body">
         <div class="meta">${[i.type, i.date, i.place].filter(Boolean).join(" · ")} <span class="id">${i.id}</span></div>
         <h2>${i.title}</h2>
         ${i.text ? `<p>${i.text}</p>` : ""}
-        ${i.people.length ? `<div class="people">With ${i.people.map(personLink).join(", ")}</div>` : ""}
+        ${i.people.length ? `<div class="people">Alături de ${i.people.map(personLink).join(", ")}</div>` : ""}
       </div>
     </article>`).join("");
 
   const types = [...new Set(items.map(i => i.type))];
   const filters = document.querySelector(".filters");
-  filters.innerHTML = [["all", "All"], ...types.map(t => [t, t])]
+  filters.innerHTML = [["all", "Toate"], ...types.map(t => [t, t])]
     .map(([f, label], n) => `<button type="button" data-f="${f}" aria-pressed="${n === 0}">${label}</button>`).join("");
 
   filters.addEventListener("click", e => {
@@ -89,9 +89,9 @@ if (svg) {
       <p class="muted">${p.place} · ${p.years}</p>
       <hr class="rule">
       <p>${p.relation}</p>
-      ${items.length ? `<p class="label">Works &amp; documents</p><ul>${items.map(i =>
+      ${items.length ? `<p class="label">Lucrări și documente</p><ul>${items.map(i =>
         `<li><a class="link" href="${itemUrl(i)}">${i.title}</a> <span class="muted">(${i.type}, ${i.date})</span></li>`).join("")}</ul>` : ""}
-      ${known.length ? `<p class="label">Also connected to</p><p>${known.map(personLink).join(", ")}</p>` : ""}`;
+      ${known.length ? `<p class="label">Legături și cu</p><p>${known.map(personLink).join(", ")}</p>` : ""}`;
   };
 
   svg.addEventListener("click", e => {
