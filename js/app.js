@@ -53,7 +53,7 @@ if (archive) {
 // Circle
 const svg = document.querySelector(".graph svg");
 if (svg) {
-  const W = 800, H = 620, R = 230;
+  const W = 1100, H = 1000, R = 440;
   const others = PEOPLE.filter(p => p.id !== "george");
   const pos = { george: [W / 2, H / 2] };
   // ponytail: fixed ring layout in data.js order (grouped by place: Bucharest, Paris, Buenos Aires).
@@ -65,12 +65,25 @@ if (svg) {
 
   const edges = others.flatMap(p => [["george", p.id], ...(p.knows || []).map(k => [p.id, k])]);
   const line = ([a, b]) => `<line data-a="${a}" data-b="${b}" x1="${pos[a][0]}" y1="${pos[a][1]}" x2="${pos[b][0]}" y2="${pos[b][1]}"/>`;
+  const wrapName = name => {
+    const words = name.split(" ");
+    const lines = [];
+    let line = "";
+    words.forEach(word => {
+      if (line && `${line} ${word}`.length > 19) { lines.push(line); line = word; }
+      else line = line ? `${line} ${word}` : word;
+    });
+    if (line) lines.push(line);
+    return lines;
+  };
   const node = p => {
     const [x, y] = pos[p.id], r = p.id === "george" ? 16 : 10;
+    const lines = wrapName(p.name);
+    const labelY = y + r + 17;
     return `<g class="node${p.id === "george" ? " center" : ""}" data-id="${p.id}" tabindex="0" role="button" aria-label="${p.name}">
       <circle cx="${x}" cy="${y}" r="${r}"/>
-      <text x="${x}" y="${y + r + 20}">${p.name}</text>
-      <text class="sub" x="${x}" y="${y + r + 36}">${p.place}</text>
+      <text x="${x}" y="${labelY}">${lines.map((line, n) => `<tspan x="${x}" dy="${n ? 15 : 0}">${line}</tspan>`).join("")}</text>
+      ${p.place ? `<text class="sub" x="${x}" y="${labelY + lines.length * 15}">${p.place}</text>` : ""}
     </g>`;
   };
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
@@ -84,9 +97,9 @@ if (svg) {
     const items = itemsOf(p.id);
     const known = edges.filter(e => e.includes(p.id) && !e.includes("george")).map(e => e.find(x => x !== p.id));
     panel.innerHTML = `
-      <p class="label muted">${p.role}</p>
+      ${p.role ? `<p class="label muted">${p.role}</p>` : ""}
       <h2>${p.name}</h2>
-      <p class="muted">${p.place} · ${p.years}</p>
+      ${p.place || p.years ? `<p class="muted">${[p.place, p.years].filter(Boolean).join(" · ")}</p>` : ""}
       <hr class="rule">
       <p>${p.relation}</p>
       ${items.length ? `<p class="label">Lucrări și documente</p><ul>${items.map(i =>
