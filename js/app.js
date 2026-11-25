@@ -54,12 +54,13 @@ if (archive) {
 const svg = document.querySelector(".graph svg");
 if (svg) {
   const W = 1100, H = 1000, R = 440;
+  const brancusi = PEOPLE.find(p => p.id === "brancusi");
   const others = PEOPLE.filter(p => p.id !== "george");
-  const pos = { george: [W / 2, H / 2] };
-  // ponytail: fixed ring layout in data.js order (grouped by place: Bucharest, Paris, Buenos Aires).
-  // Switch to a force layout (d3-force) if the circle grows past ~25 people.
-  others.forEach((p, n) => {
-    const a = (n / others.length) * 2 * Math.PI - Math.PI / 2;
+  const ring = others.filter(p => p.id !== "brancusi");
+  const pos = { george: [480, 500], brancusi: [610, 510] };
+  // Keep George and Brâncuși together in the center; named people sit around them.
+  ring.forEach((p, n) => {
+    const a = (n / ring.length) * 2 * Math.PI - Math.PI / 2;
     pos[p.id] = [W / 2 + R * Math.cos(a), H / 2 + R * Math.sin(a)];
   });
 
@@ -77,17 +78,21 @@ if (svg) {
     return lines;
   };
   const node = p => {
-    const [x, y] = pos[p.id], r = p.id === "george" ? 16 : 10;
-    const lines = wrapName(p.name);
+    const [x, y] = pos[p.id];
+    const george = p.id === "george", companion = p.id === "brancusi";
+    const r = george ? 96 : companion ? 68 : 10;
+    const lines = george ? ["George", "Teodorescu"] : companion ? ["Constantin", "Brâncuși"] : wrapName(p.name);
     const labelY = y + r + 17;
-    return `<g class="node${p.id === "george" ? " center" : ""}" data-id="${p.id}" tabindex="0" role="button" aria-label="${p.name}">
-      <circle cx="${x}" cy="${y}" r="${r}"/>
-      <text x="${x}" y="${labelY}">${lines.map((line, n) => `<tspan x="${x}" dy="${n ? 15 : 0}">${line}</tspan>`).join("")}</text>
-      ${p.place ? `<text class="sub" x="${x}" y="${labelY + lines.length * 15}">${p.place}</text>` : ""}
+    const picture = george ? `<image class="portrait" href="assets/img/george-teodorescu.jpg" x="${x - r + 4}" y="${y - r + 4}" width="${(r - 4) * 2}" height="${(r - 4) * 2}" preserveAspectRatio="xMidYMid slice" clip-path="url(#george-portrait)"/>` : "";
+    const monogram = companion ? `<text class="monogram" x="${x}" y="${y + 11}">CB</text>` : "";
+    return `<g class="node${george ? " center" : companion ? " companion" : ""}" data-id="${p.id}" tabindex="0" role="button" aria-label="${p.name}">
+      ${george ? `<circle cx="${x}" cy="${y}" r="${r}"/>${picture}<circle class="portrait-frame" cx="${x}" cy="${y}" r="${r}"/>` : `<circle cx="${x}" cy="${y}" r="${r}"/>${monogram}`}
+      <text class="${george ? "central-label" : companion ? "companion-label" : ""}" x="${x}" y="${labelY}">${lines.map((line, n) => `<tspan x="${x}" dy="${n ? 18 : 0}">${line}</tspan>`).join("")}</text>
+      ${p.place && !george && !companion ? `<text class="sub" x="${x}" y="${labelY + lines.length * 15}">${p.place}</text>` : ""}
     </g>`;
   };
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-  svg.innerHTML = edges.map(line).join("") + PEOPLE.map(node).join("");
+  svg.innerHTML = `<defs><clipPath id="george-portrait"><circle cx="${pos.george[0]}" cy="${pos.george[1]}" r="${96 - 4}"/></clipPath></defs>` + edges.map(line).join("") + PEOPLE.map(node).join("");
 
   const panel = document.querySelector(".panel");
   const select = id => {

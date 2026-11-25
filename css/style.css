@@ -156,7 +156,13 @@ a.card:hover { border-color: var(--accent); }
 .graph line.on { stroke: var(--accent); stroke-width: 2; }
 .graph .node { cursor: pointer; }
 .graph .node circle { fill: var(--card); stroke: var(--accent); stroke-width: 1.2; }
-.graph .node.center circle { fill: var(--ink); stroke: var(--ink); }
+.graph .node.center circle { fill: var(--ink); stroke: var(--accent); stroke-width: 3; }
+.graph .node.center circle.portrait-frame { fill: none; }
+.graph .node.companion circle { fill: var(--card); stroke: var(--accent); stroke-width: 2.5; }
+.graph .node .monogram { font-size: 30px; font-weight: 500; fill: var(--ink); stroke: none; }
+.graph .node .central-label { font-size: 18px; font-weight: 500; letter-spacing: .08em; }
+.graph .node .companion-label { font-size: 16px; font-weight: 500; letter-spacing: .04em; }
+.graph .node .portrait { pointer-events: none; }
 .graph .node.on circle, .graph .node:hover circle, .graph .node:focus circle { fill: var(--accent); }
 .graph .node:focus { outline: none; }
 .graph text { font-family: var(--body); font-size: 15px; fill: var(--ink); text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: var(--card); stroke-width: 5px; }
