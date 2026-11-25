@@ -120,7 +120,14 @@ a.card:hover { border-color: var(--accent); }
 .timeline li::before { content: ""; position: absolute; left: -5px; top: .55em; width: 9px; height: 9px; background: var(--paper); border: 1px solid var(--accent); border-radius: 50%; }
 .timeline .when { font-family: var(--display); font-size: 1.5rem; line-height: 1.2; }
 .timeline h2 { font-size: 1.7rem; }
-.birth-details { scroll-margin-top: 2rem; padding-bottom: 2rem; }
+.birth-trigger { display: inline; padding: 0; color: inherit; background: none; border-top: 0; border-left: 0; border-right: 0; font: inherit; text-align: left; cursor: pointer; }
+.birth-dialog { position: fixed; width: min(760px, calc(100% - 2rem)); max-width: none; max-height: min(86vh, 900px); overflow: auto; padding: clamp(1.5rem, 4vw, 3rem); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); box-shadow: 0 1rem 4rem rgb(0 0 0 / .22); }
+.birth-dialog::backdrop { background: rgb(30 25 20 / .65); }
+.birth-dialog h2 { max-width: 16em; margin: 0 2.5rem 1.5rem 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.birth-dialog-close-form { position: sticky; top: 0; float: right; margin: -.5rem -.5rem 0 0; z-index: 1; }
+.birth-dialog-close { width: 2.5rem; height: 2.5rem; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); font: inherit; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.birth-dialog-close:hover { color: var(--accent); border-color: var(--accent); }
+.birth-dialog .birth-story { max-width: 42em; }
 .timeline img { margin-top: 1rem; max-width: 420px; filter: sepia(.3); }
 .timeline-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 420px)); gap: 1rem; align-items: start; margin-top: 1rem; }
 .timeline-photos img { width: 100%; height: auto; max-width: 420px; margin-top: 0; }
